@@ -21,7 +21,7 @@ run: build
 	dart run bin/server.dart --port=$(PORT) --target=$(FUNCTION_TARGET)
 
 deploy:
-	gcloud run deploy hellowworld \
+	gcloud run deploy fitboxing2pixela \
 	--source=. \
 	--project=${GCP_PROJECT_ID} \
 	--region=asia-northeast1 \
