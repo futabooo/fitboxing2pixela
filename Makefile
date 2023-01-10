@@ -1,5 +1,6 @@
 .PHONY: clean
 
+GCP_PROJECT_ID = fitboxing2pixela
 FUNCTION_TARGET = function
 PORT = 8080
 
@@ -18,3 +19,11 @@ clean:
 
 run: build
 	dart run bin/server.dart --port=$(PORT) --target=$(FUNCTION_TARGET)
+
+deploy:
+	gcloud run deploy hellowworld \
+	--source=. \
+	--project=${GCP_PROJECT_ID} \
+	--region=asia-northeast1 \
+	--platform=managed \
+	--allow-unauthenticated
