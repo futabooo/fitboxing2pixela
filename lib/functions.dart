@@ -9,9 +9,7 @@ Future<Response> function(Request request) async {
   if (!params.keys.contains('url')) {
     return Response.badRequest();
   }
-  // final imageUrl = params['url'];
-  final imageUrl =
-      'https://pbs.twimg.com/media/FmXCf54aAAEQdWQ?format=jpg&name=large';
+  final imageUrl = params['url'];
   print('imageUrl = $imageUrl');
 
   final client = await clientViaApplicationDefaultCredentials(
@@ -19,25 +17,39 @@ Future<Response> function(Request request) async {
   );
   final visionApi = VisionApi(client);
   final response = await visionApi.images.annotate(
-    BatchAnnotateImagesRequest.fromJson({
-      "requests": [
-        {
-          "image": {
-            "source": {"imageUri": "$imageUrl"}
-          },
-          "features": [
-            {"type": "TEXT_DETECTION"}
-          ]
-        }
-      ]
-    }),
+    BatchAnnotateImagesRequest.fromJson(
+      {
+        "requests": [
+          {
+            "image": {
+              "source": {"imageUri": "$imageUrl"}
+            },
+            "features": [
+              {"type": "TEXT_DETECTION"}
+            ]
+          }
+        ]
+      },
+    ),
   );
 
-  print(response.toJson().toString());
+  final annotateimageResponse = response.responses?.first;
+  if (annotateimageResponse == null) {
+    return Response.notFound(null);
+  }
 
-  final textes = response.responses
-          ?.map((e) => e.fullTextAnnotation?.text ?? '')
-          .toList() ??
-      [];
-  return Response.ok('success ${textes.join()}');
+  final allDescription = annotateimageResponse.textAnnotations
+      ?.firstWhere((element) => element.locale != null)
+      .description;
+  print(allDescription);
+
+  final textAnnotation = annotateimageResponse.textAnnotations?.firstWhere(
+    (e) =>
+        (e.description?.contains('.') == true) &&
+        (e.description?.contains('\n') == false),
+  );
+  final burnkcal = textAnnotation?.description?.replaceAll('kcal', '');
+  print(burnkcal);
+
+  return Response.ok('success');
 }
