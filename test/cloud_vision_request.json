@@ -1,0 +1,16 @@
+{
+    "requests": [
+        {
+            "image": {
+                "source": {
+                    "imageUri": "https://pbs.twimg.com/media/FmXCf54aAAEQdWQ?format=jpg&name=large"
+                }
+            },
+            "features": [
+                {
+                    "type": "TEXT_DETECTION"
+                }
+            ]
+        }
+    ]
+}
