@@ -1,4 +1,4 @@
-# Hello world example
+# fitboxing2pixela
 
 This example handles HTTP GET requests by responding with 'Hello, World!'.
 
@@ -17,10 +17,10 @@ You can run this function example on your own machine using Docker to simulate
 running in a hosted environment.
 
 ```shell
-$ docker build -t hello .
+$ docker build -t fitboxing2pixela .
 ...
 
-$ docker run -it -p 8080:8080 --name app hello
+$ docker run -it -p 8080:8080 --name app fitboxing2pixela
 Listening on :8080
 ```
 
@@ -28,7 +28,7 @@ From another terminal:
 
 ```shell
 curl http://localhost:8080
-Hello, World!
+
 ```
 
 If you're curious about the size of the image you created, enter:

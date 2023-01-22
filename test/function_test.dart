@@ -17,7 +17,7 @@ void main() {
 
     final response = await get(Uri.parse('http://localhost:8080'));
     expect(response.statusCode, 200);
-    expect(response.body, 'Hello, World!');
+    expect(response.body, 'success');
 
     await expectLater(
       proc.stdout,

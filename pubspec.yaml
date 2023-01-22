@@ -1,7 +1,7 @@
 name: fitboxing2pixela
-description: A sample "Hello, World!" Functions Framework project.
-# version: 0.1.0
-# homepage: https://www.example.com
+description: Google Cloud Functions that record kcal burned in FitBoxing2 to pixela
+version: 0.1.0
+homepage: https://github.com/futabooo/fitboxing2pixela
 publish_to: none
 
 environment:

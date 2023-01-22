@@ -1,6 +1,5 @@
 .PHONY: clean
 
-GCP_PROJECT_ID = fitboxing2pixela
 FUNCTION_TARGET = function
 PORT = 8080
 
@@ -23,7 +22,8 @@ run: build
 deploy:
 	gcloud run deploy fitboxing2pixela \
 	--source=. \
-	--project=${GCP_PROJECT_ID} \
+	--project=${GCP_PROJECT} \
 	--region=asia-northeast1 \
 	--platform=managed \
-	--allow-unauthenticated
+	--allow-unauthenticated \
+	--update-env-vars=PIXELA_USER_TOKEN_KEY=${PIXELA_USER_TOKEN_KEY},PIXELA_USER_NAME=${PIXELA_USER_NAME},PIXELA_GRAPH_ID=${PIXELA_GRAPH_ID}
