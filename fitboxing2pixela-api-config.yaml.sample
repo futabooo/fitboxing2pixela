@@ -1,0 +1,36 @@
+swagger: "2.0"
+info:
+  title: fitboxing2pixela-api
+  description: API Gateway with a Cloud Run backend
+  version: 1.0.0
+securityDefinitions:
+  APIKeyHeader:
+    type: apiKey
+    in: header
+    name: X-API-Key
+security:
+  - APIKeyHeader: []
+schemes:
+  - https
+produces:
+  - application/json
+x-google-backend:
+  address: {your_cloud_run_url}
+paths:
+  /:
+    post:
+      parameters:
+        - in: query
+          name: url
+          type: string
+          required: true
+        - in: query
+          name: date
+          type: string
+          required: true
+      operationId: fitboxing2pixela
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
