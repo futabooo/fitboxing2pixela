@@ -2,7 +2,7 @@
 
 Fit Boxing 2のResult画面のスクショのURLを投稿するとPixelaに推定消費カロリーを記録するGoogle Cloud Functions（Cloud Run）です。
 
-<img src="https://user-images.githubusercontent.com/944185/215278691-27660202-a961-4de7-96fe-b21729a697fe.png" width="640">
+<img src="https://user-images.githubusercontent.com/944185/215333258-52918b52-5583-4344-84f4-e277486ac2d4.png" width="640">
 
 [dartfn](https://github.com/GoogleCloudPlatform/functions-framework-dart/tree/main/dartfn)というDartでGoogle Cloud Functionsを使う時に便利なツールを使ってプロジェクトを作成しています。
 
